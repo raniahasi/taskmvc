@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #383838;
+        }
+
+            header .contact-info span {
+                margin-right: 10px;
+                color: white;
+            }
+
+            header .contact-info i {
+                margin-right: 5px;
+            }
+
+            header input[type="search"] {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+
+        .main .categories .category img {
+            border-radius: 10px;
+        }
+
+        footer .payment-options img {
+            margin: 5px;
+            height: 30px;
+        }
+
+        footer .footer-links {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+            footer .footer-links li {
+                display: inline;
+                margin: 0 10px;
+            }
+
+                footer .footer-links li a {
+                    text-decoration: none;
+                    color: #000;
+                }
+
+        .col-md-9 {
+            font-size: smaller;
+        }
+
+        #navbarNav {
+            font-size: smaller;
+        }
+
+        .cart {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white py-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-9">
+                    <a class="navbar-brand" href="#"><img class="cart" src="~/Content/Your-paragraph-text-(8).png" alt="WeCart"></a>
+                    <i class="fas fa-envelope"></i> CONTACT
+                    <i class="far fa-clock ml-3"></i> 10:00 - 22:00
+                    <i class="fas fa-phone-alt ml-3"></i> PHONE: 044397210 / WHATSAPP: 0507502120
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="#" class="text-white mr-2"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white mr-2"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-white mr-2"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Home", "Home", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Categories", "Categories", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("PC Builder", "PCBuilder", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Orders", "Orders", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Wishlist", "Wishlist", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Reviews", "Reviews", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                </ul>
+                <div class="navbar-nav">
+                    @if (Session["UserName"] != null)
+                    {
+                        <span class="nav-item nav-link">Hello, @Session["UserName"]</span>
+                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "User", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Profile", "Profile", "User", null, new { @class = "nav-link" })</li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">@Html.ActionLink("Login", "Login", "User", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Register", "Register", "User", null, new { @class = "nav-link" })</li>
+                    }
+                    <a class="nav-item nav-link" href="#"><img src="~/Content/us_flag.png" alt="EN"> EN</a>
+                    <a class="nav-item nav-link" href="#"><img src="~/Content/ar_flag.png" alt="AR"> AR</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer class="bg-light border-top py-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <img src="~/Content/apple_pay.png" alt="Apple Pay" class="img-fluid">
+                    <img src="~/Content/visa.png" alt="Visa" class="img-fluid">
+                    <img src="~/Content/paypal.png" alt="PayPal" class="img-fluid">
+                </div>
+            </div>
+            <ul class="list-inline mt-3">
+                <li class="list-inline-item"><a href="#">Home Page</a></li>
+                <li class="list-inline-item"><a href="#">About Us</a></li>
+                <li class="list-inline-item"><a href="#">My Account</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="#">Delivery</a></li>
+                <li class="list-inline-item"><a href="#">Refund</a></li>
+                <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

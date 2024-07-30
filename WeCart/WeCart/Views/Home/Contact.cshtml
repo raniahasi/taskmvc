@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Your Personal Information </h2>
+
+@using (Html.BeginForm("submitContact", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="Name" required />
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" id="age" name="Age" required />
+    </div>
+    <div class="form-group">
+        <label>Gender:</label><br />
+        <input type="radio" id="male" name="Gender" value="Male" />
+        <label for="male">Male</label><br />
+        <input type="radio" id="female" name="Gender" value="Female" />
+        <label for="female">Female</label>
+    </div>
+    <div class="form-group">
+        <label for="country">Country:</label>
+        <select class="form-control" id="country" name="Country">
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Canada">Canada</option>
+            <option value="Jordan">Jordan</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Hobbies">Hobbies:</label>
+        <input type="text" class="form-control" id="Hobbies" name="Hobbies" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    
+    }
+
